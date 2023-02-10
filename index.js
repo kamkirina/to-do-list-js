@@ -35,6 +35,9 @@ const addNewTask = (text) => {
   const task = {
     id: taskId,
   };
+  
+   tasks.push(task);
+  taskList.append(createTaskItem(text, taskId));
 };
 
 const createTaskItem = (task, taskIds) => {
