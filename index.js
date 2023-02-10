@@ -1,13 +1,4 @@
-/*const newForm = document.createElement("div");
-newForm.className = "authorization";
 
-const tasks = document.querySelector("#tasks");
-
-tasks.append(newForm);
-
-newForm.innerHTML =
-  '<form class="create-user-form"><label>Имя<input type="text" name="userName" placeholder="Введите ваше имя"></label><label>Пароль<input type="password" name="password" placeholder="Придумайте Пароль"></label><button type="submit">Подтвердить</button></form>';
-*/
 
 const taskList = document.querySelector(".tasks-list");
 const taskForm = document.querySelector(".create-task-block");
@@ -31,16 +22,18 @@ const tasks = [
 ];
 
 const addNewTask = (text) => {
-  const taskId = Date.now();
+  const taskId = Date.now().toString();
   const task = {
     id: taskId,
+    completed: false,
+    text
   };
-  
-   tasks.push(task);
+
+  tasks.push(task);
   taskList.append(createTaskItem(text, taskId));
 };
 
-const createTaskItem = (task, taskIds) => {
+function createTaskItem(task, taskIds) {
   const taskItem = document.createElement("div");
   taskItem.dataset.taskId = taskIds;
   taskItem.className = "task-item";
@@ -79,7 +72,7 @@ const createTaskItem = (task, taskIds) => {
   formCheckbox.append(inputForm, labelForm);
 
   return taskItem;
-};
+}
 
 tasks.forEach((el) => {
   taskList.append(createTaskItem(el.text, el.id));
